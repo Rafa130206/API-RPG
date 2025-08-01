@@ -1,5 +1,6 @@
 package br.com.rpg.APICampanha.domain.campanha;
 
+import br.com.rpg.APICampanha.domain.personagem.Personagem;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "campanhas")
 @Entity(name = "Campanha")
