@@ -1,6 +1,7 @@
 package br.com.rpg.APICampanha.domain.personagem;
 
 import br.com.rpg.APICampanha.domain.campanha.Campanha;
+import br.com.rpg.APICampanha.domain.itemAmaldicoado.ItemAmaldicoado;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
