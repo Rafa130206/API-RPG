@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "itens_amaldicoados")
-@Entity(name = "ItensAmaldicoados")
+@Entity(name = "ItemAmaldicoado")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,9 +25,13 @@ public class ItemAmaldicoado {
 
     @Enumerated(EnumType.STRING)
     private Elemento elemento;
+
+    @Column(length = 1000)
     private String descricao;
     private boolean unico;
     private boolean penalidadeCustomizada;
+
+    @Column(length = 1000)
     private String descricaoPenalidadeCustomizada;
 
     @ManyToMany(mappedBy = "itensAmaldicoados")
