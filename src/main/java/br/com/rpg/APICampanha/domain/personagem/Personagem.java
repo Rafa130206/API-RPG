@@ -43,4 +43,6 @@ public class Personagem {
             inverseJoinColumns = @JoinColumn(name = "item_id")
     )
     private List<ItemAmaldicoado> itensAmaldicoados = new ArrayList<>();
+
+    private boolean ativo;
 }

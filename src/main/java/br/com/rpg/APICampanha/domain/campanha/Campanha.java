@@ -37,4 +37,6 @@ public class Campanha {
     public void prePersist(){
         this.dataCriacao = LocalDate.now();
     }
+
+    private boolean ativo;
 }
