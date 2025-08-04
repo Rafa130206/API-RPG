@@ -45,4 +45,8 @@ public class Personagem {
     private List<ItemAmaldicoado> itensAmaldicoados = new ArrayList<>();
 
     private boolean ativo;
+
+    public Personagem(DadosCadastroPersonagem dados) {
+
+    }
 }
