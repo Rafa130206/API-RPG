@@ -6,6 +6,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -37,12 +38,12 @@ public record DadosCadastroPersonagem(
         @NotNull
         int qtdMunicao,
 
-        @NotBlank
+        @Size(max = 1000)
         String observacoes,
 
-        @NotNull @Valid
-        Campanha campanha,
+        @NotNull
+        Long campanhaId,
 
-        List<ItemAmaldicoado> itensAmaldicoados
+        List<Long> itensAmaldicoadosIds
 ) {
 }

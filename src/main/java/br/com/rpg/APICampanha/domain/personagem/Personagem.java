@@ -47,6 +47,17 @@ public class Personagem {
     private boolean ativo;
 
     public Personagem(DadosCadastroPersonagem dados) {
-
+        this.ativo = true;
+        this.nome = dados.nome();
+        this.classe = dados.classe();
+        this.vidaAtual = dados.vidaAtual();
+        this.vidaMaxima = dados.vidaMaxima();
+        this.pontosDeEsforcoAtuais = dados.pontosDeEsforcoAtuais();
+        this.pontosDeEsforcoMaximos = dados.pontosDeEsforcoMaximos();
+        this.sanidadeAtual = dados.sanidadeAtual();
+        this.sanidadeMaxima = dados.sanidadeMaxima();
+        this.qtdMunicao = dados.qtdMunicao();
+        this.observacoes = dados.observacoes();
     }
+
 }
