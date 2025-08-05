@@ -60,4 +60,55 @@ public class Personagem {
         this.observacoes = dados.observacoes();
     }
 
+    public void atualizarInformacoes(DadosAtualizacaoPersonagem dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+
+        if (dados.vidaAtual() > -1) {
+            this.vidaAtual = dados.vidaAtual();
+        }
+
+        if (dados.pontosDeEsforcoAtuais() > -1) {
+            this.pontosDeEsforcoAtuais = dados.pontosDeEsforcoAtuais();
+        }
+
+        if (dados.pontosDeEsforcoMaximos() > -1) {
+            this.pontosDeEsforcoMaximos = dados.pontosDeEsforcoMaximos();
+        }
+
+        if (dados.sanidadeAtual() > -1) {
+            this.sanidadeAtual = dados.sanidadeAtual();
+        }
+
+        if (dados.sanidadeMaxima() > -1) {
+            this.sanidadeMaxima = dados.sanidadeMaxima();
+        }
+
+        if (dados.vidaMaxima() > -1) {
+            this.vidaMaxima = dados.vidaMaxima();
+        }
+
+        if (dados.qtdMunicao() > -1) {
+            this.qtdMunicao = dados.qtdMunicao();
+        }
+
+        if (dados.observacoes() != null) {
+            this.observacoes = dados.observacoes();
+        }
+
+    }
+
+    public void adicionarItemAmaldicoado(ItemAmaldicoado item) {
+        if (!this.itensAmaldicoados.contains(item)) {
+            this.itensAmaldicoados.add(item);
+        }
+    }
+
+    public void removerItemAmaldicoado(ItemAmaldicoado item) {
+        this.itensAmaldicoados.remove(item);
+    }
+
+    public void excluir() { this.ativo = false; }
+
 }

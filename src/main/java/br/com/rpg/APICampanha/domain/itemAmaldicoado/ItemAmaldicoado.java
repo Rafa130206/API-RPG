@@ -36,4 +36,6 @@ public class ItemAmaldicoado {
 
     @ManyToMany(mappedBy = "itensAmaldicoados")
     private List<Personagem> personagens = new ArrayList<>();
+
+    private boolean ativo;
 }
