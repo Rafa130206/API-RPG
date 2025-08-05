@@ -8,8 +8,8 @@ public record DadosAtualizacaoItemAmaldicoado(
         String nome,
         Elemento elemento,
         String descricao,
-        boolean unico,
-        boolean penalidadeCustomizada,
-        String descricaoPenaloidadeCustomizada
+        Boolean unico,
+        Boolean penalidadeCustomizada,
+        String descricaoPenalidadeCustomizada
 ) {
 }

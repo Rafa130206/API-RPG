@@ -28,8 +28,8 @@ public class ItemAmaldicoado {
 
     @Column(length = 1000)
     private String descricao;
-    private boolean unico;
-    private boolean penalidadeCustomizada;
+    private Boolean unico;
+    private Boolean penalidadeCustomizada;
 
     @Column(length = 1000)
     private String descricaoPenalidadeCustomizada;
@@ -37,5 +37,38 @@ public class ItemAmaldicoado {
     @ManyToMany(mappedBy = "itensAmaldicoados")
     private List<Personagem> personagens = new ArrayList<>();
 
-    private boolean ativo;
+    private Boolean ativo;
+
+    public ItemAmaldicoado(DadosCadastroItemAmaldicoado dados) {
+        this.ativo = true;
+        this.nome = dados.nome();
+        this.elemento = dados.elemento();
+        this.descricao = dados.descricao();
+        this.unico = dados.unico();
+        this.penalidadeCustomizada = dados.unico();
+        this.descricaoPenalidadeCustomizada = dados.descricaoPenalidadeCustomizada();
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoItemAmaldicoado dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.elemento() != null) {
+            this.elemento = dados.elemento();
+        }
+        if (dados.descricao() != null) {
+            this.descricao = dados.descricao();
+        }
+        if (dados.unico() != null) {
+            this.unico = dados.unico();
+        }
+        if (dados.penalidadeCustomizada() != null) {
+            this.penalidadeCustomizada = dados.penalidadeCustomizada();
+        }
+        if (dados.descricaoPenalidadeCustomizada() != null) {
+            this.descricaoPenalidadeCustomizada = dados.descricaoPenalidadeCustomizada();
+        }
+    }
+
+    public void excluir() { this.ativo = false; }
 }
