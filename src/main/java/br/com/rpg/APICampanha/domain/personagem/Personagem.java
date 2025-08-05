@@ -43,4 +43,72 @@ public class Personagem {
             inverseJoinColumns = @JoinColumn(name = "item_id")
     )
     private List<ItemAmaldicoado> itensAmaldicoados = new ArrayList<>();
+
+    private boolean ativo;
+
+    public Personagem(DadosCadastroPersonagem dados) {
+        this.ativo = true;
+        this.nome = dados.nome();
+        this.classe = dados.classe();
+        this.vidaAtual = dados.vidaAtual();
+        this.vidaMaxima = dados.vidaMaxima();
+        this.pontosDeEsforcoAtuais = dados.pontosDeEsforcoAtuais();
+        this.pontosDeEsforcoMaximos = dados.pontosDeEsforcoMaximos();
+        this.sanidadeAtual = dados.sanidadeAtual();
+        this.sanidadeMaxima = dados.sanidadeMaxima();
+        this.qtdMunicao = dados.qtdMunicao();
+        this.observacoes = dados.observacoes();
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoPersonagem dados) {
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+
+        if (dados.vidaAtual() > -1) {
+            this.vidaAtual = dados.vidaAtual();
+        }
+
+        if (dados.pontosDeEsforcoAtuais() > -1) {
+            this.pontosDeEsforcoAtuais = dados.pontosDeEsforcoAtuais();
+        }
+
+        if (dados.pontosDeEsforcoMaximos() > -1) {
+            this.pontosDeEsforcoMaximos = dados.pontosDeEsforcoMaximos();
+        }
+
+        if (dados.sanidadeAtual() > -1) {
+            this.sanidadeAtual = dados.sanidadeAtual();
+        }
+
+        if (dados.sanidadeMaxima() > -1) {
+            this.sanidadeMaxima = dados.sanidadeMaxima();
+        }
+
+        if (dados.vidaMaxima() > -1) {
+            this.vidaMaxima = dados.vidaMaxima();
+        }
+
+        if (dados.qtdMunicao() > -1) {
+            this.qtdMunicao = dados.qtdMunicao();
+        }
+
+        if (dados.observacoes() != null) {
+            this.observacoes = dados.observacoes();
+        }
+
+    }
+
+    public void adicionarItemAmaldicoado(ItemAmaldicoado item) {
+        if (!this.itensAmaldicoados.contains(item)) {
+            this.itensAmaldicoados.add(item);
+        }
+    }
+
+    public void removerItemAmaldicoado(ItemAmaldicoado item) {
+        this.itensAmaldicoados.remove(item);
+    }
+
+    public void excluir() { this.ativo = false; }
+
 }

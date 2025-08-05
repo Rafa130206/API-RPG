@@ -33,8 +33,23 @@ public class Campanha {
     @OneToMany(mappedBy = "campanha", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Personagem> personagens = new ArrayList<>();
 
-    @PrePersist
-    public void prePersist(){
+    private boolean ativo;
+
+    public Campanha(DadosCadastroCampanha dados) {
+        this.ativo = true;
+        this.titulo = dados.titulo();
+        this.descricao = dados.descricao();
         this.dataCriacao = LocalDate.now();
     }
+
+    public void atualizarInformacoes(DadosAtualizacaoCampanha dados) {
+        if (dados.titulo() != null) {
+            this.titulo = dados.titulo();
+        }
+        if (dados.descricao() != null) {
+            this.descricao = dados.descricao();
+        }
+    }
+
+    public void excluir() { this.ativo = false; }
 }
