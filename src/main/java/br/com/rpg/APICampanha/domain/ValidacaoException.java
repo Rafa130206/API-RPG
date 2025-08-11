@@ -1,7 +1,7 @@
 package br.com.rpg.APICampanha.domain;
 
 public class ValidacaoException extends RuntimeException {
-  public ValidacaoException(String message) {
-    super(message);
-  }
+    public ValidacaoException(String mensagem) {
+        super(mensagem);
+    }
 }

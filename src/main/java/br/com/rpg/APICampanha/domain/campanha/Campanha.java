@@ -35,11 +35,12 @@ public class Campanha {
 
     private boolean ativo;
 
-    public Campanha(DadosCadastroCampanha dados) {
+    public Campanha(DadosCadastroCampanha dados, Usuario usuario) {
         this.ativo = true;
         this.titulo = dados.titulo();
         this.descricao = dados.descricao();
         this.dataCriacao = LocalDate.now();
+        this.usuario = usuario;
     }
 
     public void atualizarInformacoes(DadosAtualizacaoCampanha dados) {
