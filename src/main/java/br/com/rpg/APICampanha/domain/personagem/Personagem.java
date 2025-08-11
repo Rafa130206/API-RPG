@@ -23,6 +23,8 @@ public class Personagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
+    @Enumerated(EnumType.STRING)
     private Classe classe;
     private int vidaAtual;
     private int vidaMaxima;
