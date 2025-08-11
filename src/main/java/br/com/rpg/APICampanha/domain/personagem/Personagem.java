@@ -3,6 +3,7 @@ package br.com.rpg.APICampanha.domain.personagem;
 import br.com.rpg.APICampanha.domain.campanha.Campanha;
 import br.com.rpg.APICampanha.domain.itemAmaldicoado.ItemAmaldicoado;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,16 +27,17 @@ public class Personagem {
 
     @Enumerated(EnumType.STRING)
     private Classe classe;
-    private int vidaAtual;
-    private int vidaMaxima;
-    private int pontosDeEsforcoAtuais;
-    private int pontosDeEsforcoMaximos;
-    private int sanidadeAtual;
-    private int sanidadeMaxima;
-    private int qtdMunicao;
+    private Integer vidaAtual;
+    private Integer vidaMaxima;
+    private Integer pontosDeEsforcoAtuais;
+    private Integer pontosDeEsforcoMaximos;
+    private Integer sanidadeAtual;
+    private Integer sanidadeMaxima;
+    private Integer qtdMunicao;
     private String observacoes;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @NotNull
     private Campanha campanha;
 
     @ManyToMany
@@ -47,6 +49,10 @@ public class Personagem {
     private List<ItemAmaldicoado> itensAmaldicoados = new ArrayList<>();
 
     private boolean ativo;
+
+    public void setCampanha(Campanha campanha) {
+        this.campanha = campanha;
+    }
 
     public Personagem(DadosCadastroPersonagem dados) {
         this.ativo = true;
@@ -67,31 +73,31 @@ public class Personagem {
             this.nome = dados.nome();
         }
 
-        if (dados.vidaAtual() > -1) {
+        if (dados.vidaAtual() != null && dados.vidaAtual() > -1) {
             this.vidaAtual = dados.vidaAtual();
         }
 
-        if (dados.pontosDeEsforcoAtuais() > -1) {
-            this.pontosDeEsforcoAtuais = dados.pontosDeEsforcoAtuais();
-        }
-
-        if (dados.pontosDeEsforcoMaximos() > -1) {
-            this.pontosDeEsforcoMaximos = dados.pontosDeEsforcoMaximos();
-        }
-
-        if (dados.sanidadeAtual() > -1) {
-            this.sanidadeAtual = dados.sanidadeAtual();
-        }
-
-        if (dados.sanidadeMaxima() > -1) {
-            this.sanidadeMaxima = dados.sanidadeMaxima();
-        }
-
-        if (dados.vidaMaxima() > -1) {
+        if (dados.vidaMaxima() != null && dados.vidaMaxima() > -1) {
             this.vidaMaxima = dados.vidaMaxima();
         }
 
-        if (dados.qtdMunicao() > -1) {
+        if (dados.pontosDeEsforcoAtuais() != null && dados.pontosDeEsforcoAtuais() > -1) {
+            this.pontosDeEsforcoAtuais = dados.pontosDeEsforcoAtuais();
+        }
+
+        if (dados.pontosDeEsforcoMaximos() != null && dados.pontosDeEsforcoMaximos() > -1) {
+            this.pontosDeEsforcoMaximos = dados.pontosDeEsforcoMaximos();
+        }
+
+        if (dados.sanidadeAtual() != null && dados.sanidadeAtual() > -1) {
+            this.sanidadeAtual = dados.sanidadeAtual();
+        }
+
+        if (dados.sanidadeMaxima() != null && dados.sanidadeMaxima() > -1) {
+            this.sanidadeMaxima = dados.sanidadeMaxima();
+        }
+
+        if (dados.qtdMunicao() != null && dados.qtdMunicao() > -1) {
             this.qtdMunicao = dados.qtdMunicao();
         }
 

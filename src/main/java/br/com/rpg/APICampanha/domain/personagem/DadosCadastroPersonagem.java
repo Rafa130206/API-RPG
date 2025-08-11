@@ -10,7 +10,7 @@ public record DadosCadastroPersonagem(
         @NotBlank
         String nome,
 
-        @NotBlank
+        @NotNull
         Classe classe,
 
         @NotNull

@@ -1,7 +1,10 @@
 package br.com.rpg.APICampanha.controller;
 
+import br.com.rpg.APICampanha.domain.campanha.Campanha;
+import br.com.rpg.APICampanha.domain.campanha.CampanhaRepository;
 import br.com.rpg.APICampanha.domain.personagem.*;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -23,14 +26,24 @@ public class PersonagemController {
     @Autowired
     private PersonagemRepository repository;
 
+    @Autowired
+    private CampanhaRepository campanhaRepository;
+
     @PostMapping
     @Transactional
     public ResponseEntity<DadosListagemPersonagem> cadastrar (@RequestBody @Valid DadosCadastroPersonagem dados) {
+        Campanha campanha = campanhaRepository.findById(dados.campanhaId())
+                .orElseThrow(() -> new EntityNotFoundException("Campanha não encontrada"));
+
         var personagem = new Personagem(dados);
+        personagem.setCampanha(campanha);
+
         repository.save(personagem);
-        return ResponseEntity.created(URI.create("/personagens" + personagem.getId()))
+        return ResponseEntity
+                .created(URI.create("/personagens/" + personagem.getId()))
                 .body(new DadosListagemPersonagem(personagem));
     }
+
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemPersonagem>> listar(@PageableDefault(size = 5, sort = "nome") Pageable paginacao) {
