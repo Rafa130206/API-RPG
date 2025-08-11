@@ -8,7 +8,7 @@ import java.util.List;
 
 public record DadosListagemPersonagem(Long id,
                                       String nome,
-                                      String classe,
+                                      Classe classe,
                                       int vidaAtual,
                                       int vidaMaxima,
                                       int pontosDeEsforcoAtuais,

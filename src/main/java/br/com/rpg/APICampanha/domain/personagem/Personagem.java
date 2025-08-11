@@ -23,7 +23,7 @@ public class Personagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String classe;
+    private Classe classe;
     private int vidaAtual;
     private int vidaMaxima;
     private int pontosDeEsforcoAtuais;
@@ -49,7 +49,7 @@ public class Personagem {
     public Personagem(DadosCadastroPersonagem dados) {
         this.ativo = true;
         this.nome = dados.nome();
-        this.classe = dados.classe();
+        classe = dados.classe();
         this.vidaAtual = dados.vidaAtual();
         this.vidaMaxima = dados.vidaMaxima();
         this.pontosDeEsforcoAtuais = dados.pontosDeEsforcoAtuais();
