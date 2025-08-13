@@ -38,7 +38,11 @@ public class CampanhaController {
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemCampanha>> listar(@PageableDefault(size = 5) Pageable paginacao) {
-        var page = repository.findAllByAtivoTrue(paginacao).map(DadosListagemCampanha::new);
+        var usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        var page = repository.findAllByUsuarioIdAndAtivoTrue(usuario.getId(), paginacao)
+                .map(DadosListagemCampanha::new);
+
         return ResponseEntity.ok(page);
     }
 
